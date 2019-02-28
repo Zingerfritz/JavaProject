@@ -1,0 +1,9 @@
+class StartMenu
+  Display menu
+  Take input
+  if info
+    Display info
+  elseif exit
+    Exit game
+  elseif chooseplayers
+    createplayers
