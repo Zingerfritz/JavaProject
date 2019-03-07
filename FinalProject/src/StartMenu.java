@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class StartMenu {
-	public static void getPlayerNum() {
+	public static int getPlayerNum() {
 		Scanner scanner = new Scanner(System.in);
 		int numOfPlayers;
 		
@@ -23,7 +23,7 @@ public class StartMenu {
 		System.out.print("\n\n" + numOfPlayers);
 		
 		scanner.close();
-		Game.numOfPlayers = numOfPlayers;
+		return numOfPlayers;
 	}
 	
 	public static void createPlayers(int num) {
@@ -42,7 +42,7 @@ public class StartMenu {
 		choice = scanner.nextInt();
 		
 		if (choice == 1) {
-			getPlayerNum();
+			choice = getPlayerNum();
 			createPlayers(choice);
 		}
 	}
