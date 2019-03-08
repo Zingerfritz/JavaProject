@@ -1,49 +1,42 @@
 import java.util.Scanner;
 
-public class StartMenu {
-	public static int getPlayerNum() {
+public class StartMenu extends Driver {
+
+	public static int getPlayerNum() {	//This method enforces full input validation
 		Scanner scanner = new Scanner(System.in);
-		int numOfPlayers;
-		
-		do {
-			String input;
-			boolean isDig = true;
-			System.out.print("How many players? ");
-			input = scanner.nextLine();
-			for (int j = 0; j < input.length(); j++) {
-				if (!Character.isDigit(input.charAt(j)))
-					isDig = false;
-			}
-			if (isDig) 
-				numOfPlayers = Integer.parseInt(input);
-			else 
-				numOfPlayers = 0;
-		} while(numOfPlayers < 2 || numOfPlayers > 4);
-		
-		System.out.print("\n\n" + numOfPlayers);
-		
-		scanner.close();
+		int numOfPlayers = intInput("How Many Players? ", 2, 4);
 		return numOfPlayers;
 	}
 	
-	public static void createPlayers(int num) {
+	public static void createPlayers(int num) {	
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n");
+		
+		Player[] players = new Player[num];
 		for (int j = 0; j < num; j++) {
-			
+			System.out.print("Enter Player " + (j + 1) + " Name: ");
+			players[j] = new Player(scanner.nextLine());
+		}
+		
+		Game.setPlayers(players);
 	}
 	
 	public static void startMenu() {
-		Scanner scanner = new Scanner(System.in);
 		int choice;
 		
 		System.out.println(Game.gName);
 		System.out.println("\t1. Start Game");
 		System.out.println("\t2. Quit");
 		
-		choice = scanner.nextInt();
+		choice = intInput("", 1, 2);
 		
-		if (choice == 1) {
+		if (choice != 1) {
+			Driver.close();
+		}
+		else {
 			choice = getPlayerNum();
 			createPlayers(choice);
 		}
+		
 	}
 }
