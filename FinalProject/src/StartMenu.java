@@ -39,4 +39,25 @@ public class StartMenu extends Driver {
 		}
 		
 	}
+	
+	public static void continueMenu() {
+		int choice;
+		
+		System.out.println(Game.gName);
+		System.out.println("\t1. Play Again");
+		System.out.println("\t2. Main Menu");
+		System.out.println("\t3. Quit");
+		
+		choice = intInput("", 1, 3);
+		
+		if (choice == 1) {
+			Game.game();
+		}
+		else if (choice == 2) {
+			startMenu();
+		}
+		else {
+			close();
+		}
+	}
 }

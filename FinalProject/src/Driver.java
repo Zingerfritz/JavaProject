@@ -20,9 +20,15 @@ public class Driver {
 		return num;
 	}
 	
-	public static void main(String[] args) {
-		StartMenu.startMenu();
-		Game.game();
+	public static void winner(String name) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n\n\nWINNER");
+		System.out.println(name);
+		long t = System.currentTimeMillis();
+		while (System.currentTimeMillis() - t < 5000) {
+		}
+		System.out.println("Press any key to continue");
+		scanner.nextLine();
 	}
 	
 	public static void close() {
@@ -30,8 +36,10 @@ public class Driver {
 		System.exit(0);
 	}
 	
-	public static void winner(String name) {
-		System.out.println("\n\n\nWINNER");
-		System.out.println(name);
+	public static void main(String[] args) {
+		StartMenu.startMenu();
+		Game.game();
 	}
+	
+	
 }

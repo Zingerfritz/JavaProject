@@ -15,6 +15,12 @@ public class Game extends Driver {
 		numOfPlayers = players.length;
 	}
 	
+	public static void reset() {
+		for (int j = 0; j < numOfPlayers; j++) {
+			players[j].reset();
+		}
+	}
+	
 	public static void game() {
 		Scanner scanner = new Scanner(System.in);
 		boolean gameOn = true;
@@ -34,11 +40,13 @@ public class Game extends Driver {
 				if (choice == 2) Driver.close();
 				players[j].rollDice();
 				if (players[j].spot() == 0) {
-					Driver.winner(players[j].name());
+					winner(players[j].name());
 					gameOn = false;
 					break;
 				}
 			}
 		}
+		
+		StartMenu.continueMenu();
 	}
 }

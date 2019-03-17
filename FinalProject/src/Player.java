@@ -26,4 +26,8 @@ public class Player {
 		boardSpot += die1 + die2;
 		boardSpot %= Game.spots;
 	}
+	
+	public void reset() {
+		boardSpot = 0;
+	}
 }
