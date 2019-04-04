@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
 public class StartMenu extends Driver {
-
-	public static int getPlayerNum() {	//This method enforces full input validation
+	
+	public int getPlayerNum() {	
 		Scanner scanner = new Scanner(System.in);
 		int numOfPlayers = intInput("How Many Players? ", 2, 4);
 		return numOfPlayers;
 	}
 	
-	public static void createPlayers(int num) {	
+	public void createPlayers(int num) {	
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("\n");
 		
@@ -18,32 +18,34 @@ public class StartMenu extends Driver {
 			players[j] = new Player(scanner.nextLine());
 		}
 		
-		Game.setPlayers(players);
+		game.setPlayers(players);
 	}
 	
-	public static void startMenu() {
+	public void start() {
 		int choice;
+		game = new Game();
 		
-		System.out.println(Game.gName);
+		System.out.println(gName);
 		System.out.println("\t1. Start Game");
 		System.out.println("\t2. Quit");
 		
 		choice = intInput("", 1, 2);
 		
 		if (choice != 1) {
-			Driver.close();
+			close();
 		}
 		else {
 			choice = getPlayerNum();
 			createPlayers(choice);
+			game.play();
 		}
 		
 	}
 	
-	public static void continueMenu() {
+	public void cont() {
 		int choice;
 		
-		System.out.println(Game.gName);
+		System.out.println(gName);
 		System.out.println("\t1. Play Again");
 		System.out.println("\t2. Main Menu");
 		System.out.println("\t3. Quit");
@@ -51,10 +53,10 @@ public class StartMenu extends Driver {
 		choice = intInput("", 1, 3);
 		
 		if (choice == 1) {
-			Game.game();
+			game.play();
 		}
 		else if (choice == 2) {
-			startMenu();
+			start();
 		}
 		else {
 			close();

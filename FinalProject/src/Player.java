@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Player {
+public class Player extends Driver {
 	private String name;
 	private int boardSpot;
 	private int die1, die2;
@@ -24,7 +24,7 @@ public class Player {
 		die1 = dice.nextInt(6) + 1;
 		die2 = dice.nextInt(6) + 1;
 		boardSpot += die1 + die2;
-		boardSpot %= Game.spots;
+		boardSpot %= spots;
 	}
 	
 	public void reset() {

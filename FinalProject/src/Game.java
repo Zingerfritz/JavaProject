@@ -1,27 +1,25 @@
 import java.util.Scanner;
 
 public class Game extends Driver {
-	private static int numOfPlayers;
-	public static final String gName = "Monopoly Party";
-	public static final int spots = 12;
-	private static Player[] players;
+	private int numOfPlayers;
+	private Player[] players;
 	
-	public static int numOfPlayers() {
+	public int numOfPlayers() {
 		return numOfPlayers;
 	}
 	
-	public static void setPlayers(Player[] players) {
-		Game.players = players;
+	public void setPlayers(Player[] players) {
+		this.players = players;
 		numOfPlayers = players.length;
 	}
 	
-	public static void reset() {
+	public void reset() {
 		for (int j = 0; j < numOfPlayers; j++) {
 			players[j].reset();
 		}
 	}
 	
-	public static void game() {
+	public void play() {
 		Scanner scanner = new Scanner(System.in);
 		boolean gameOn = true;
 		while(gameOn) {
@@ -37,7 +35,7 @@ public class Game extends Driver {
 				System.out.println("\t1. Roll Dice");
 				System.out.println("\t2. Quit");
 				choice = intInput("Your choice: ", 1, 2);
-				if (choice == 2) Driver.close();
+				if (choice == 2) close();
 				players[j].rollDice();
 				if (players[j].spot() == 0) {
 					winner(players[j].name());
@@ -47,6 +45,6 @@ public class Game extends Driver {
 			}
 		}
 		
-		StartMenu.continueMenu();
+		
 	}
 }

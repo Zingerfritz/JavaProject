@@ -1,8 +1,13 @@
 import java.util.Scanner;
 
 public class Driver {
+	protected Game game;
+	protected Player[] players;
+	public final String gName = "Monopoly Party";
+	public final int spots = 12;
 	
-	public static int intInput(String query, int low, int high) {
+	
+	public int intInput(String query, int low, int high) {
 		int num = 0;
 		Scanner scanner = new Scanner(System.in);
 		do {
@@ -20,7 +25,7 @@ public class Driver {
 		return num;
 	}
 	
-	public static void winner(String name) {
+	public void winner(String name) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("\n\n\nWINNER");
 		System.out.println(name);
@@ -31,14 +36,15 @@ public class Driver {
 		scanner.nextLine();
 	}
 	
-	public static void close() {
+	public void close() {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBye-Bye");
 		System.exit(0);
 	}
 	
 	public static void main(String[] args) {
-		StartMenu.startMenu();
-		Game.game();
+		StartMenu startMenu = new StartMenu();
+		startMenu.start();
+		startMenu.cont();
 	}
 	
 	
