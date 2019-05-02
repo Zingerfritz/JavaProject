@@ -1,0 +1,11 @@
+           Monopoly Party
+             How to Play
+
+
+1. Choose number of players
+2. Add player names
+3. Take turns to "roll your dice"
+4. What you roll is how many spots you move on the board
+5. Whichever player makes it to the end of the board first wins
+6. Just like Monopoly but NOT
+7. Have fun
